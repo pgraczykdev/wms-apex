@@ -6,6 +6,7 @@ CLAUDE.md
 *.env
 wallet/
 *.wallet
+Wallet_*.zip
 
 # SQLcl / Liquibase local state
 .dbtools/
