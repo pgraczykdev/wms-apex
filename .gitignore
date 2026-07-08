@@ -1,0 +1,23 @@
+# Claude Code project notes 
+CLAUDE.md
+
+# Secrets
+.env
+*.env
+wallet/
+*.wallet
+
+# SQLcl / Liquibase local state
+.dbtools/
+.liquibase/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
