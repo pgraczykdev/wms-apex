@@ -1,0 +1,11 @@
+DECLARE
+   l_exists NUMBER;
+BEGIN
+   SELECT CASE WHEN EXISTS (SELECT 1 FROM all_users WHERE username = 'WMS_APEX') THEN 1 ELSE 0 END
+   INTO l_exists FROM dual;
+
+   IF l_exists = 1 THEN
+      EXECUTE IMMEDIATE 'DROP USER WMS_APEX CASCADE';
+   END IF;
+END;
+/
