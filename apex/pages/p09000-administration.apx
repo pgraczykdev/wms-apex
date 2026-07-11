@@ -1,0 +1,39 @@
+page 9000 (
+    name: Administration
+    alias: ADMINISTRATION
+    title: Administration
+    pageGroup: @administration
+    appearance {
+        pageTemplate: @/standard
+        templateOptions: #DEFAULT#
+    }
+    security {
+        pageAccessProtection: argumentsMustHaveChecksum
+        formAutoComplete: false
+    }
+
+    /*
+      Navigation hub for the Administration section. Region is type: list
+      (source: shared-components/lists.apx list "administration-sections"),
+      rendered with the cards list template so each entry still shows as a
+      clickable card - list entries have no separate description field, so
+      the short English description is folded into the entry label instead.
+      Add one more entry to that shared list per new subpage (9010, 9015,
+      ... per the numbering convention in CLAUDE.md).
+    */
+    region administration-sections (
+        name: Administration
+        type: list
+        source {
+            list: @administration-sections
+        }
+        layout {
+            sequence: 10
+            slot: BODY
+        }
+        componentAppearance {
+            listTemplate: @/cards
+        }
+    )
+
+)

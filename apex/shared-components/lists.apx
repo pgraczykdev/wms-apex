@@ -1,0 +1,132 @@
+list navigation-bar (
+    name: Navigation Bar
+
+    entry app-user (
+        label: &APP_USER.
+        icon {
+            imageIconCssClasses: fa-user
+        }
+        layout {
+            sequence: 10
+        }
+        link {
+            target: {
+                type: url
+                url: #
+            }
+        }
+        userDefinedAttributes {
+            2: has-username
+        }
+    )
+
+    entry list_item (
+        label: ---
+        layout {
+            sequence: 20
+            parentEntry: @app-user
+        }
+        link {
+            target: {
+                type: url
+                url: separator
+            }
+        }
+        serverSideCondition {
+            type: userIsAuthenticated
+        }
+    )
+
+    entry sign-out (
+        label: Sign Out
+        icon {
+            imageIconCssClasses: fa-sign-out
+        }
+        layout {
+            sequence: 30
+            parentEntry: @app-user
+        }
+        link {
+            target: {
+                type: url
+                url: &LOGOUT_URL.
+            }
+        }
+        serverSideCondition {
+            type: userIsAuthenticated
+        }
+    )
+
+)
+
+list administration-sections (
+    name: Administration Sections
+
+    entry logs (
+        label: Logs — view and search application log entries
+        icon {
+            imageIconCssClasses: fa-list-alt
+        }
+        layout {
+            sequence: 10
+        }
+        link {
+            target: {
+                page: 9005
+            }
+        }
+    )
+
+)
+
+list navigation-menu (
+    name: Navigation Menu
+
+    entry home (
+        label: Home
+        icon {
+            imageIconCssClasses: fa-home
+        }
+        layout {
+            sequence: 10
+        }
+        link {
+            target: {
+                page: 1
+            }
+        }
+    )
+
+    entry administration (
+        label: Administration
+        icon {
+            imageIconCssClasses: fa-cogs
+        }
+        layout {
+            sequence: 90
+        }
+        link {
+            target: {
+                page: 9000
+            }
+        }
+    )
+
+    entry logs (
+        label: Logs
+        icon {
+            imageIconCssClasses: fa-list-alt
+        }
+        layout {
+            sequence: 10
+            parentEntry: @administration
+        }
+        link {
+            target: {
+                page: 9005
+            }
+        }
+    )
+
+)
+

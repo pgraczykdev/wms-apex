@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+<include file="sys/object_grants/object_grants_as_grantor.sys.package_spec.dbms_aq.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="sys/object_grants/object_grants_as_grantor.sys.package_spec.dbms_aq.to_wms_liquibase.sql" relativeToChangelogFile="true"/>
+<include file="sys/object_grants/object_grants_as_grantor.sys.package_spec.dbms_aq.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="sys/object_grants/object_grants_as_grantor.sys.package_spec.dbms_aqadm.to_wms_liquibase.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/tables/logger_logs.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs.to_wms_liquibase.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/tables/logger_logs_apex_items.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/tables/logger_prefs.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/tables/logger_prefs_by_client_id.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/comments/logger_prefs_by_client_id.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/package_specs/logger.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/triggers/biu_logger_apex_items.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/views/logger_logs_5_min.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/views/logger_logs_60_min.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/package_bodies/logger.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/procedures/logger_configure.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/triggers/biu_logger_prefs.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/views/logger_logs_terse.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/indexes/logger_apex_items_idx1.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/indexes/logger_logs_idx1.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/jobs/logger_purge_job.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/jobs/logger_unset_prefs_by_client.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/ref_constraints/logger_logs_apx_itms_fk.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>
