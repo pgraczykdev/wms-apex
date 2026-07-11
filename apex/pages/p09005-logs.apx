@@ -299,21 +299,16 @@ page 9005 (
         )
 
         column LINE_NO (
-            type: numberField
+            type: textField
             heading {
                 heading: Line No
-                alignment: end
             }
             layout {
                 sequence: 90
-                columnAlignment: end
             }
             source {
                 databaseColumn: LINE_NO
-                dataType: number
-            }
-            columnFilter {
-                lovType: none
+                dataType: varchar2
             }
         )
 
@@ -355,7 +350,7 @@ page 9005 (
             }
             source {
                 databaseColumn: CALL_STACK
-                dataType: clob
+                dataType: varchar2
             }
         )
 

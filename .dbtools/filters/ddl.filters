@@ -61,7 +61,7 @@ object_name not like 'DM$%',      -- covers tables, views, indexes
 object_name not like 'I_MLOG$%',      -- covers Materialized Views Logs Indexes
 object_name not like 'I_SNAP$%',
 
-export_type not in ('USER_SYS_PRIVS','USER_ROLE_PRIVS','USER','ALL_USERS'),
+export_type not in ('USER_SYS_PRIVS','USER_ROLE_PRIVS','USER','ALL_USERS','ORDS_SCHEMA'),
 
 -- Exclude certain database object types:
 -- object_type not in ('CONTEXT', 'SCHEDULE'),         
