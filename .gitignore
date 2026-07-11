@@ -8,10 +8,6 @@ wallet/
 *.wallet
 Wallet_*.zip
 
-# SQLcl / Liquibase local state
-.dbtools/
-.liquibase/
-
 # Logs
 *.log
 
