@@ -1,3 +1,7 @@
+-- liquibase formatted sql
+-- changeset WMS_LOG_PROC:1783791938490 stripComments:false  logicalFilePath:log_process_enqueue_dequeue_fixes\wms_log_proc\package_bodies\consumer.sql
+-- sqlcl_snapshot src/database/wms_log_proc/package_bodies/consumer.sql:eb73c9add72e45fb863951f98dc6ed5a2178f092:0ac4968f1cebb1f1d962d6d012521c0dc382148a:alter
+
 create or replace package body wms_log_proc.consumer as
 
     gc_global_prefix constant wms_log.logger_logs.scope%type := lower($$plsql_unit)
@@ -46,5 +50,3 @@ create or replace package body wms_log_proc.consumer as
 end consumer;
 /
 
-
--- sqlcl_snapshot {"hash":"0ac4968f1cebb1f1d962d6d012521c0dc382148a","type":"PACKAGE_BODY","name":"CONSUMER","schemaName":"WMS_LOG_PROC","sxml":""}

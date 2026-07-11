@@ -1,3 +1,7 @@
+-- liquibase formatted sql
+-- changeset WMS_LOG_PROC:1783791938480 stripComments:false  logicalFilePath:log_process_enqueue_dequeue_fixes\wms_log_proc\package_bodies\message.sql
+-- sqlcl_snapshot src/database/wms_log_proc/package_bodies/message.sql:1962a9cca83b128aa8057911dd197bdad7365724:c8c6491ab311a1a8d48325f1961f45ec102f3cda:alter
+
 create or replace package body wms_log_proc.message as
 
     gc_global_prefix constant wms_log.logger_logs.scope%type := lower($$plsql_unit)
@@ -68,5 +72,3 @@ create or replace package body wms_log_proc.message as
 end message;
 /
 
-
--- sqlcl_snapshot {"hash":"c8c6491ab311a1a8d48325f1961f45ec102f3cda","type":"PACKAGE_BODY","name":"MESSAGE","schemaName":"WMS_LOG_PROC","sxml":""}

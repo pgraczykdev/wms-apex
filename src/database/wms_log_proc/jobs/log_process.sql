@@ -3,8 +3,8 @@ begin
         job_name            => 'WMS_LOG_PROC.LOG_PROCESS',
         job_type            => 'STORED_PROCEDURE',
         job_action          => 'WMS_LOG_PROC.CONSUMER.RUN',
-        start_date          => timestamp '2026-07-11 17:05:13.010669',
-        repeat_interval     => 'FREQ=SECONDLY;BYSECOND=1',
+        start_date          => timestamp '2026-07-11 19:40:10.615784',
+        repeat_interval     => 'FREQ=SECONDLY',
         end_date            => null,
         job_class           => 'DEFAULT_JOB_CLASS',
         comments            => null,
@@ -29,4 +29,4 @@ end;
 /
 
 
--- sqlcl_snapshot {"hash":"02c4597af453f1b7dd295c087b59bbd788ec7ada","type":"JOB","name":"LOG_PROCESS","schemaName":"WMS_LOG_PROC","sxml":""}
+-- sqlcl_snapshot {"hash":"697e74ab27d3e7aa4194fee2e4c6bdc2623a17b0","type":"JOB","name":"LOG_PROCESS","schemaName":"WMS_LOG_PROC","sxml":""}
