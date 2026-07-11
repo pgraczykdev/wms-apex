@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+<include file="sys/object_grants/object_grants_as_grantor.sys.package_spec.dbms_aqadm.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.package_spec.logger.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.package_spec.logger.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.package_spec.logger.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.package_spec.logger.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs_apex_items.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs_apex_items.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs_apex_items.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_logs_apex_items.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs_by_client_id.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs_by_client_id.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs_by_client_id.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.table.logger_prefs_by_client_id.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_5_min.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_5_min.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_5_min.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_5_min.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_60_min.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_60_min.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_60_min.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_60_min.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_terse.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_terse.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_terse.to_wms_app_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/object_grants/object_grants_as_grantor.wms_log.view.logger_logs_terse.to_wms_log_proc.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/sequences/logger_apx_items_seq.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/sequences/logger_logs_seq.sql" relativeToChangelogFile="true"/>
+<include file="wms_app/package_specs/log_settings_api.sql" relativeToChangelogFile="true"/>
+<include file="wms_app/object_grants/object_grants_as_grantor.wms_app.package_spec.log_settings_api.to_wms_apex.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/package_specs/constants.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/package_specs/consumer.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/package_specs/exceptions.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/package_specs/message.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/object_grants/object_grants_as_grantor.wms_log_proc.package_spec.message.to_wms_app.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/type_specs/log_message_t.sql" relativeToChangelogFile="true"/>
+<include file="wms_app/package_bodies/log_settings_api.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/package_bodies/consumer.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/type_specs/log_level_change_message_t.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/package_bodies/message.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/type_bodies/log_level_change_message_t.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/aq_queue_tables/log_message_qt.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/jobs/log_process.sql" relativeToChangelogFile="true"/>
+<include file="wms_log/package_bodies/logger.sql" relativeToChangelogFile="true"/>
+<include file="wms_log_proc/aq_queues/log_message_q.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>
