@@ -2958,4 +2958,4 @@ end logger;
 
 
 
--- sqlcl_snapshot {"hash":"e45de3ecac28301f2672a8d472efba0aedf987fc","type":"PACKAGE_BODY","name":"LOGGER","schemaName":"WMS_LOG","sxml":""}
+-- sqlcl_snapshot {"hash":"bd1b4823c4ab9f60fff2b15494c808fc727f9dbf","type":"PACKAGE_BODY","name":"LOGGER","schemaName":"WMS_LOG","sxml":""}
