@@ -27,6 +27,7 @@ create or replace package body wms_log_proc.message as
     exception
         when others then
             wms_log.logger.log_error('Unexpected error occured', l_scope, null, l_params);
+            raise;
     end enqueue_message;
 
     procedure lc (
@@ -68,4 +69,4 @@ end message;
 /
 
 
--- sqlcl_snapshot {"hash":"1962a9cca83b128aa8057911dd197bdad7365724","type":"PACKAGE_BODY","name":"MESSAGE","schemaName":"WMS_LOG_PROC","sxml":""}
+-- sqlcl_snapshot {"hash":"c8c6491ab311a1a8d48325f1961f45ec102f3cda","type":"PACKAGE_BODY","name":"MESSAGE","schemaName":"WMS_LOG_PROC","sxml":""}

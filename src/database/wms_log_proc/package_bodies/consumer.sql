@@ -2,7 +2,6 @@ create or replace package body wms_log_proc.consumer as
 
     gc_global_prefix constant wms_log.logger_logs.scope%type := lower($$plsql_unit)
                                                                 || '.';
-    gc_wait_seconds  constant pls_integer := 5;
 
     procedure run is
 
@@ -14,10 +13,11 @@ create or replace package body wms_log_proc.consumer as
         l_payload            log_message_t;
     begin
         wms_log.logger.log('START', l_scope, null, l_params);
-        l_dequeue_options.wait := gc_wait_seconds;
+        l_dequeue_options.wait := sys.dbms_aq.no_wait;
+        l_dequeue_options.navigation := sys.dbms_aq.next_message;
         loop
-            begin
-                dbms_aq.dequeue(
+            << dequeue_loop >> begin
+                sys.dbms_aq.dequeue(
                     queue_name         => wms_log_proc.constants.gc_queue_name,
                     dequeue_options    => l_dequeue_options,
                     message_properties => l_message_properties,
@@ -26,13 +26,19 @@ create or replace package body wms_log_proc.consumer as
                 );
 
                 l_payload.process_msg();
+                commit;
             exception
                 when wms_log_proc.exceptions.e_dequeue_timeout then
-                    null;
+                    exit;
                 when others then
-                    wms_log.logger.log_error('Unexpected error occured', l_scope, null, l_params);
+                    wms_log.logger.log_error('Unexpected error occured, msgid=' || rawtohex(l_message_handle),
+                                             l_scope,
+                                             null,
+                                             l_params);
+
+                    rollback;
             end;
-        end loop;
+        end loop dequeue_loop;
 
         wms_log.logger.log('END', l_scope, null, l_params);
     end run;
@@ -41,4 +47,4 @@ end consumer;
 /
 
 
--- sqlcl_snapshot {"hash":"eb73c9add72e45fb863951f98dc6ed5a2178f092","type":"PACKAGE_BODY","name":"CONSUMER","schemaName":"WMS_LOG_PROC","sxml":""}
+-- sqlcl_snapshot {"hash":"0ac4968f1cebb1f1d962d6d012521c0dc382148a","type":"PACKAGE_BODY","name":"CONSUMER","schemaName":"WMS_LOG_PROC","sxml":""}
