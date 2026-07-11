@@ -19,6 +19,7 @@ Thumbs.db
 # Editors
 .vscode/
 .idea/
+
 # Oracle SQLcl Projects
 artifact/*
 var/*
@@ -27,3 +28,6 @@ var/*
 *.zip
 *.log
 **/.DS_Store
+
+#Dev_scripts
+dev_scripts/

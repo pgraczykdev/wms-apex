@@ -1,0 +1,39 @@
+page 9000 (
+    name: Administration
+    alias: ADMINISTRATION
+    title: Administration
+    pageGroup: @administration
+    appearance {
+        pageTemplate: @/standard
+        templateOptions: #DEFAULT#
+    }
+    security {
+        pageAccessProtection: argumentsMustHaveChecksum
+        formAutoComplete: false
+    }
+
+    region administration-sections (
+        name: Administration
+        type: list
+        source {
+            list: @administration-sections
+        }
+        layout {
+            sequence: 10
+            slot: body
+        }
+        componentAppearance {
+            listTemplate: @/cards
+            templateOptions: [
+                #DEFAULT#
+                t-Cards--displaySubtitle
+                t-Cards--featured t-Cards--block force-fa-lg
+                t-Cards--displayInitials
+                t-Cards--4cols
+                t-Cards--animRaiseCard
+            ]
+        }
+    )
+
+)
+

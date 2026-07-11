@@ -1,0 +1,17 @@
+appProcess set-log-level (
+    name: SET_LOG_LEVEL
+    type: executeCode
+    source {
+        plsqlCode:
+            ```plsql
+            wms_app.log_settings_api.set_log_level(
+                p_level => apex_application.g_x01
+            );
+            ```
+    }
+    execution {
+        sequence: 10
+        point: ajaxCallback
+    }
+)
+
