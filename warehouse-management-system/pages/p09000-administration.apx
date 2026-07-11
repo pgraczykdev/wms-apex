@@ -12,15 +12,6 @@ page 9000 (
         formAutoComplete: false
     }
 
-    /*
-      Navigation hub for the Administration section. Region is type: list
-      (source: shared-components/lists.apx list "administration-sections"),
-      rendered with the cards list template so each entry still shows as a
-      clickable card - list entries have no separate description field, so
-      the short English description is folded into the entry label instead.
-      Add one more entry to that shared list per new subpage (9010, 9015,
-      ... per the numbering convention in CLAUDE.md).
-    */
     region administration-sections (
         name: Administration
         type: list
@@ -29,11 +20,20 @@ page 9000 (
         }
         layout {
             sequence: 10
-            slot: BODY
+            slot: body
         }
         componentAppearance {
             listTemplate: @/cards
+            templateOptions: [
+                #DEFAULT#
+                t-Cards--displaySubtitle
+                t-Cards--featured t-Cards--block force-fa-lg
+                t-Cards--displayInitials
+                t-Cards--4cols
+                t-Cards--animRaiseCard
+            ]
         }
     )
 
 )
+

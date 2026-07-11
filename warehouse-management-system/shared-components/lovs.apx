@@ -1,0 +1,82 @@
+lov boolean (
+    name: BOOLEAN
+    source {
+        location: staticValues
+    }
+
+    entry false (
+        sequence: 2
+        display: No
+        return: FALSE
+    )
+
+    entry true (
+        sequence: 1
+        display: Yes
+        return: TRUE
+    )
+
+)
+
+lov log-level (
+    name: LOG_LEVEL
+    source {
+        location: staticValues
+    }
+
+    entry off (
+        sequence: 10
+        display: Off
+        return: OFF
+    )
+
+    entry permanent (
+        sequence: 20
+        display: Permanent
+        return: PERMANENT
+    )
+
+    entry error (
+        sequence: 30
+        display: Error
+        return: ERROR
+    )
+
+    entry warning (
+        sequence: 40
+        display: Warning
+        return: WARNING
+    )
+
+    entry information (
+        sequence: 50
+        display: Information
+        return: INFORMATION
+    )
+
+    entry debug (
+        sequence: 60
+        display: Debug
+        return: DEBUG
+    )
+
+    entry timing (
+        sequence: 70
+        display: Timing
+        return: TIMING
+    )
+
+    entry sys-context (
+        sequence: 80
+        display: Sys Context
+        return: SYS_CONTEXT
+    )
+
+    entry apex (
+        sequence: 90
+        display: Apex
+        return: APEX
+    )
+
+)
+

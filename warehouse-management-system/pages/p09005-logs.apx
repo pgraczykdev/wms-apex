@@ -12,14 +12,6 @@ page 9005 (
         formAutoComplete: false
     }
 
-    /*
-      Read-only Logger viewer (WMS_LOG.LOGGER_LOGS) - no edit/ARP: this grid
-      never allows add/update/delete, so interactiveGridAutomaticRowProcessing
-      is intentionally omitted.
-      Column set follows the standard OraOpenSource/Insum "Logger" LOGGER_LOGS
-      schema; verify against the real DDL once WMS_LOG's LOGGER package/table
-      are actually created (not yet in this repo).
-    */
     region logs (
         name: Logs
         type: interactiveGrid
@@ -48,18 +40,14 @@ page 9005 (
         }
         layout {
             sequence: 10
-            slot: BODY
+            slot: body
         }
         appearance {
             template: @/standard
             templateOptions: #DEFAULT#
         }
-        edit {
-            enabled: false
-        }
         pagination {
             type: page
-            showTotalCount: true
         }
         messages {
             whenNoDataFound: No log entries found
@@ -79,6 +67,9 @@ page 9005 (
                 excel
             ]
         }
+        advanced {
+            savedReportMappingIdentifier: 8408281312080599
+        }
 
         savedReport PRIMARY (
             visibility: primary
@@ -95,78 +86,147 @@ page 9005 (
                     sequence: 1
                 }
             )
+
             displayColumn (
                 column: @TIME_STAMP
                 layout {
                     sequence: 2
                 }
             )
+
             displayColumn (
                 column: @LOGGER_LEVEL
                 layout {
                     sequence: 3
                 }
             )
+
             displayColumn (
                 column: @TEXT
                 layout {
                     sequence: 4
                 }
             )
+
             displayColumn (
                 column: @SCOPE
                 layout {
                     sequence: 5
                 }
             )
+
             displayColumn (
                 column: @MODULE
                 layout {
                     sequence: 6
                 }
             )
+
             displayColumn (
                 column: @ACTION
                 layout {
                     sequence: 7
                 }
             )
+
             displayColumn (
                 column: @UNIT_NAME
                 layout {
                     sequence: 8
                 }
             )
+
             displayColumn (
                 column: @LINE_NO
                 layout {
                     sequence: 9
                 }
             )
+
             displayColumn (
                 column: @USER_NAME
                 layout {
                     sequence: 10
                 }
             )
+
             displayColumn (
                 column: @CLIENT_IDENTIFIER
                 layout {
                     sequence: 11
                 }
             )
+
             displayColumn (
                 column: @CALL_STACK
                 layout {
                     sequence: 12
                 }
             )
+
             displayColumn (
                 column: @EXTRA
                 layout {
                     sequence: 13
                 }
             )
+
+        )
+
+        column ACTION (
+            type: textField
+            heading {
+                heading: Action
+            }
+            layout {
+                sequence: 70
+            }
+            source {
+                databaseColumn: ACTION
+                dataType: varchar2
+            }
+        )
+
+        column CALL_STACK (
+            type: textarea
+            heading {
+                heading: Call Stack
+            }
+            layout {
+                sequence: 120
+            }
+            source {
+                databaseColumn: CALL_STACK
+                dataType: clob
+            }
+        )
+
+        column CLIENT_IDENTIFIER (
+            type: textField
+            heading {
+                heading: Client Identifier
+            }
+            layout {
+                sequence: 110
+            }
+            source {
+                databaseColumn: CLIENT_IDENTIFIER
+                dataType: varchar2
+            }
+        )
+
+        column EXTRA (
+            type: textarea
+            heading {
+                heading: Extra
+            }
+            layout {
+                sequence: 130
+            }
+            source {
+                databaseColumn: EXTRA
+                dataType: clob
+            }
         )
 
         column ID (
@@ -184,20 +244,22 @@ page 9005 (
             }
         )
 
-        column TIME_STAMP (
-            type: datePicker
+        column LINE_NO (
+            type: numberField
             heading {
-                heading: Timestamp
+                heading: Line No
+                alignment: end
             }
             layout {
-                sequence: 20
-            }
-            appearance {
-                formatMask: DD-MON-YYYY HH24:MI:SS
+                sequence: 90
+                columnAlignment: end
             }
             source {
-                databaseColumn: TIME_STAMP
-                dataType: timestamp
+                databaseColumn: LINE_NO
+                dataType: number
+            }
+            columnFilter {
+                lovType: none
             }
         )
 
@@ -217,6 +279,34 @@ page 9005 (
             }
             columnFilter {
                 lovType: none
+            }
+        )
+
+        column MODULE (
+            type: textField
+            heading {
+                heading: Module
+            }
+            layout {
+                sequence: 60
+            }
+            source {
+                databaseColumn: MODULE
+                dataType: varchar2
+            }
+        )
+
+        column SCOPE (
+            type: textField
+            heading {
+                heading: Scope
+            }
+            layout {
+                sequence: 50
+            }
+            source {
+                databaseColumn: SCOPE
+                dataType: varchar2
             }
         )
 
@@ -242,45 +332,20 @@ page 9005 (
             }
         )
 
-        column SCOPE (
-            type: textField
+        column TIME_STAMP (
+            type: datePicker
             heading {
-                heading: Scope
+                heading: Timestamp
             }
             layout {
-                sequence: 50
+                sequence: 20
+            }
+            appearance {
+                formatMask: DD-MON-YYYY HH24:MI:SS
             }
             source {
-                databaseColumn: SCOPE
-                dataType: varchar2
-            }
-        )
-
-        column MODULE (
-            type: textField
-            heading {
-                heading: Module
-            }
-            layout {
-                sequence: 60
-            }
-            source {
-                databaseColumn: MODULE
-                dataType: varchar2
-            }
-        )
-
-        column ACTION (
-            type: textField
-            heading {
-                heading: Action
-            }
-            layout {
-                sequence: 70
-            }
-            source {
-                databaseColumn: ACTION
-                dataType: varchar2
+                databaseColumn: TIME_STAMP
+                dataType: timestamp
             }
         )
 
@@ -294,20 +359,6 @@ page 9005 (
             }
             source {
                 databaseColumn: UNIT_NAME
-                dataType: varchar2
-            }
-        )
-
-        column LINE_NO (
-            type: textField
-            heading {
-                heading: Line No
-            }
-            layout {
-                sequence: 90
-            }
-            source {
-                databaseColumn: LINE_NO
                 dataType: varchar2
             }
         )
@@ -326,47 +377,11 @@ page 9005 (
             }
         )
 
-        column CLIENT_IDENTIFIER (
-            type: textField
-            heading {
-                heading: Client Identifier
-            }
-            layout {
-                sequence: 110
-            }
-            source {
-                databaseColumn: CLIENT_IDENTIFIER
-                dataType: varchar2
-            }
-        )
-
-        column CALL_STACK (
-            type: textarea
-            heading {
-                heading: Call Stack
-            }
-            layout {
-                sequence: 120
-            }
-            source {
-                databaseColumn: CALL_STACK
-                dataType: varchar2
-            }
-        )
-
-        column EXTRA (
-            type: textarea
-            heading {
-                heading: Extra
-            }
-            layout {
-                sequence: 130
-            }
-            source {
-                databaseColumn: EXTRA
-                dataType: clob
-            }
-        )
+        page {
+            borderWidth: 0.5
+            borderColor: #666666
+        }
     )
 
 )
+

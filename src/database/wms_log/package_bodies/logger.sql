@@ -414,7 +414,7 @@ as
     $else
       l_protect_admin_procs := get_pref(logger.gc_pref_protect_admin_procs);
       if l_protect_admin_procs = 'TRUE' then
-        if get_pref(logger.gc_pref_install_schema) = sys_context('USERENV','SESSION_USER') then
+        if sys_context('USERENV','SESSION_USER') IN ('WMS_LIQUIBASE', 'WMS_APP', 'WMS_APP_PROC', 'WMS_LOG', 'WMS_LOG_PROC', 'WMS_APEX') then
           l_return := true;
         else
           l_return := false;

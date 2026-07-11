@@ -1,3 +1,46 @@
+list administration-sections (
+    name: Administration Sections
+
+    entry log-settings (
+        label: Log Settings
+        icon {
+            imageIconCssClasses: fa-sliders
+        }
+        layout {
+            sequence: 20
+        }
+        link {
+            target: {
+                page: 9010
+            }
+        }
+        userDefinedAttributes {
+            3: LS
+            7: Change the Log Settings
+        }
+    )
+
+    entry logs (
+        label: Logs
+        icon {
+            imageIconCssClasses: fa-list-alt
+        }
+        layout {
+            sequence: 10
+        }
+        link {
+            target: {
+                page: 9005
+            }
+        }
+        userDefinedAttributes {
+            3: L
+            7: View and search application log entries
+        }
+    )
+
+)
+
 list navigation-bar (
     name: Navigation Bar
 
@@ -59,28 +102,23 @@ list navigation-bar (
 
 )
 
-list administration-sections (
-    name: Administration Sections
+list navigation-menu (
+    name: Navigation Menu
 
-    entry logs (
-        label: Logs — view and search application log entries
+    entry administration (
+        label: Administration
         icon {
-            imageIconCssClasses: fa-list-alt
+            imageIconCssClasses: fa-cogs
         }
         layout {
-            sequence: 10
+            sequence: 90
         }
         link {
             target: {
-                page: 9005
+                page: 9000
             }
         }
     )
-
-)
-
-list navigation-menu (
-    name: Navigation Menu
 
     entry home (
         label: Home
@@ -97,17 +135,18 @@ list navigation-menu (
         }
     )
 
-    entry administration (
-        label: Administration
+    entry log-settings (
+        label: Log Settings
         icon {
-            imageIconCssClasses: fa-cogs
+            imageIconCssClasses: fa-sliders
         }
         layout {
-            sequence: 90
+            sequence: 20
+            parentEntry: @administration
         }
         link {
             target: {
-                page: 9000
+                page: 9010
             }
         }
     )

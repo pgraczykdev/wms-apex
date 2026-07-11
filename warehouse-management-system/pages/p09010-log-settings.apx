@@ -1,0 +1,132 @@
+page 9010 (
+    name: Log Settings
+    alias: LOG-SETTINGS
+    title: Log Settings
+    pageGroup: @administration
+    appearance {
+        pageTemplate: @/standard
+        templateOptions: #DEFAULT#
+    }
+    javaScript {
+        fileUrls: #APP_FILES#js/log-settings.js
+    }
+    security {
+        pageAccessProtection: argumentsMustHaveChecksum
+        formAutoComplete: false
+    }
+
+    region log-level-buttons (
+        name: Log Level Buttons
+        type: staticContent
+        layout {
+            sequence: 20
+            parentRegion: @log-settings-form
+            slot: regionBody
+        }
+        appearance {
+            template: @/buttons-container
+            templateOptions: [
+                #DEFAULT#
+                t-ButtonRegion--noUI
+            ]
+        }
+    )
+
+    region log-settings-form (
+        name: Log Level
+        type: staticContent
+        layout {
+            sequence: 10
+            slot: body
+        }
+        appearance {
+            template: @/standard
+            templateOptions: [
+                #DEFAULT#
+                t-Region--scrollBody
+            ]
+        }
+    )
+
+    pageItem P9010_LOG_LEVEL (
+        type: selectList
+        label {
+            label: Log Level
+            alignment: left
+        }
+        lov {
+            type: sharedComponent
+            lov: @log-level
+            displayNullValue: false
+        }
+        layout {
+            sequence: 10
+            region: @log-settings-form
+            slot: regionBody
+            alignment: left
+        }
+        appearance {
+            template: @/optional-floating
+            templateOptions: #DEFAULT#
+        }
+        validation {
+            valueRequired: true
+        }
+        source {
+            type: functionBody
+            plsqlFunctionBody:
+                ```plsql
+                RETURN wms_log.logger.get_pref (
+                        p_pref_name => 'LEVEL' 
+                    );
+                ```
+        }
+        help {
+            helpText: Select the Logger level to apply. This changes what severity of log entries WMS_LOG.LOGGER records going forward.
+        }
+    )
+
+    button apply (
+        buttonName: SAVE
+        label: Save
+        layout {
+            sequence: 10
+            region: @log-level-buttons
+            slot: next
+        }
+        appearance {
+            buttonTemplate: @/text
+            hot: true
+            templateOptions: #DEFAULT#
+        }
+        behavior {
+            action: definedByDynamicAction
+        }
+    )
+
+    dynamicAction apply-log-level (
+        name: "[Click] Save Log Level"
+        execution {
+            sequence: 10
+        }
+        when {
+            event: click
+            selectionType: button
+            button: @apply
+        }
+
+        action set-log-level-js (
+            action: executeJsCode
+            settings {
+                jsCode: LogSettings.setLogLevel();
+            }
+            execution {
+                sequence: 10
+                fireOnInit: false
+            }
+        )
+
+    )
+
+)
+
