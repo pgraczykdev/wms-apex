@@ -5,4 +5,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 <include file="changes/basic_project_files/stage.changelog.xml" relativeToChangelogFile="true"/>
 <!--CHANGES-->
+<changeSet id="release-0.0.1" author="WMS_LIQUIBASE">
+<tagDatabase tag="0.0.1"/>
+</changeSet>
 </databaseChangeLog>
