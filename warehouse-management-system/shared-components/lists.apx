@@ -39,6 +39,25 @@ list administration-sections (
         }
     )
 
+    entry process-controller (
+        label: Process Controller
+        icon {
+            imageIconCssClasses: fa-tasks
+        }
+        layout {
+            sequence: 30
+        }
+        link {
+            target: {
+                page: 9015
+            }
+        }
+        userDefinedAttributes {
+            3: PC
+            7: Run, stop, and monitor background processes
+        }
+    )
+
 )
 
 list navigation-bar (
@@ -163,6 +182,22 @@ list navigation-menu (
         link {
             target: {
                 page: 9005
+            }
+        }
+    )
+
+    entry process-controller (
+        label: Process Controller
+        icon {
+            imageIconCssClasses: fa-tasks
+        }
+        layout {
+            sequence: 30
+            parentEntry: @administration
+        }
+        link {
+            target: {
+                page: 9015
             }
         }
     )

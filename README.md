@@ -1,47 +1,33 @@
-# Example Template
+# WMS Apex
 
-The introduction summarizes the purpose and function of the project, and should be concise (a brief paragraph or two). This introduction may be the same as the first paragraph on the project page.
+Warehouse Management System built on Oracle Cloud Infrastructure.
 
-For a full description of the module, visit the
-[project page](https://www.oracle.com).
+## Tech stack
 
-Submit bug reports and feature suggestions, or track changes in the
-[issue queue](https://www.oracle.com).
+- **Database**: Oracle Autonomous Database (ADB), accessed via wallet (mTLS)
+- **Application logic**: PL/SQL (packages, object types, DBMS_AQ-based
+  messaging, DBMS_SCHEDULER jobs)
+- **UI**: Oracle APEX
+- **Async processing**: Oracle Advanced Queuing (DBMS_AQ/DBMS_AQADM) with
+  DBMS_SCHEDULER-driven consumer jobs
+- **Logging**: [OraOpenSource Logger](https://github.com/OraOpenSource/Logger)
+  (v3.1.1, MIT-licensed), installed in the `WMS_LOG` schema
+- **Version control / deployment**: SQLcl Project (Liquibase-based),
+  connected via SQLcl in `-thin` (pure JDBC) mode
+- **Setup tooling**: PowerShell wrapper scripts (`wms-admin/`,
+  `wms-users/`) reading credentials from a gitignored `.env`
 
+See `PROCESS_MAP.md` for how the schemas and processes communicate, and
+`CLAUDE.md` for the full set of architecture decisions.
 
-## Table of contents (optional)
+## Acknowledgments
 
-- Requirements
-- Installation
-- Configuration
-- Troubleshooting
-- FAQ
-- Maintainers
+Logging in this project is powered by
+[OraOpenSource Logger](https://github.com/OraOpenSource/Logger) — thank you
+to its creators and contributors for a great open-source PL/SQL logging
+framework.
 
+## More sections coming later
 
-## Requirements (required)
-
-This project requires the following:
-
-- [Hard Work](https://www.noMorePlay.com)
-
-
-## Installation (required, unless a separate INSTALL.md is provided)
-
-Install as you would normally install.
-
-## Configuration (optional)
-
-## Troubleshooting (optional)
-
-## FAQ (optional)
-
-**Q: How do I write a README?**
-
-**A:** Follow this template. It's fun and easy!
-
-## Maintainers (optional)
-
-
-## For more information about SQLcl Projects:
-Reach out to the SQLcl Project Extension documentation by visiting the [Database Application CI/CD Doc Link](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/24.3/sqcug/database-application-ci-cd.html).
+Requirements, installation, and configuration instructions will be added
+here as the project matures.

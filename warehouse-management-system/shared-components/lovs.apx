@@ -24,6 +24,30 @@ lov log-level (
         location: staticValues
     }
 
+    entry apex (
+        sequence: 90
+        display: Apex
+        return: APEX
+    )
+
+    entry debug (
+        sequence: 60
+        display: Debug
+        return: DEBUG
+    )
+
+    entry error (
+        sequence: 30
+        display: Error
+        return: ERROR
+    )
+
+    entry information (
+        sequence: 50
+        display: Information
+        return: INFORMATION
+    )
+
     entry off (
         sequence: 10
         display: Off
@@ -36,28 +60,10 @@ lov log-level (
         return: PERMANENT
     )
 
-    entry error (
-        sequence: 30
-        display: Error
-        return: ERROR
-    )
-
-    entry warning (
-        sequence: 40
-        display: Warning
-        return: WARNING
-    )
-
-    entry information (
-        sequence: 50
-        display: Information
-        return: INFORMATION
-    )
-
-    entry debug (
-        sequence: 60
-        display: Debug
-        return: DEBUG
+    entry sys-context (
+        sequence: 80
+        display: Sys Context
+        return: SYS_CONTEXT
     )
 
     entry timing (
@@ -66,16 +72,10 @@ lov log-level (
         return: TIMING
     )
 
-    entry sys-context (
-        sequence: 80
-        display: Sys Context
-        return: SYS_CONTEXT
-    )
-
-    entry apex (
-        sequence: 90
-        display: Apex
-        return: APEX
+    entry warning (
+        sequence: 40
+        display: Warning
+        return: WARNING
     )
 
 )
