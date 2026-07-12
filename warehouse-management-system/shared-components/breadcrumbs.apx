@@ -62,5 +62,21 @@ breadcrumb breadcrumb (
         }
     )
 
+    entry process-controller (
+        name: Process Controller
+        pageNumber: 9015
+        execution {
+            sequence: 30
+        }
+        appearance {
+            parentEntry: @administration
+        }
+        link {
+            target: {
+                page: 9015
+            }
+        }
+    )
+
 )
 

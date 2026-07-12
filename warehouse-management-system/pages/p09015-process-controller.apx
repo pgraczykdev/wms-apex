@@ -1,0 +1,423 @@
+page 9015 (
+    name: Process Controller
+    alias: PROCESS-CONTROLLER
+    title: Process Controller
+    pageGroup: @administration
+    appearance {
+        pageTemplate: @/standard
+        templateOptions: #DEFAULT#
+    }
+    javaScript {
+        fileUrls: #APP_FILES#js/process-controller.js
+    }
+    security {
+        pageAccessProtection: argumentsMustHaveChecksum
+        formAutoComplete: false
+    }
+
+    region process-controller-buttons (
+        name: Process Actions
+        type: staticContent
+        layout {
+            sequence: 10
+            slot: body
+        }
+        appearance {
+            template: @/buttons-container
+            templateOptions: [
+                #DEFAULT#
+                t-ButtonRegion--noUI
+            ]
+        }
+    )
+
+    region process-controller-ig (
+        name: Process Controller
+        type: interactiveGrid
+        source {
+            location: localDatabase
+            type: sqlQuery
+            sqlQuery:
+                ```sql
+                select
+                    job_name,
+                    owner,
+                    full_job_name,
+                    enabled,
+                    state,
+                    last_start_date,
+                    next_run_date,
+                    run_count,
+                    failure_count
+                  from table(wms_app.process_controller_api.get_processes())
+                ```
+        }
+        layout {
+            sequence: 20
+            slot: body
+        }
+        appearance {
+            template: @/standard
+            templateOptions: #DEFAULT#
+        }
+        advanced {
+            htmlDomId: process-controller-ig
+        }
+        edit {
+            enabled: true
+        }
+        pagination {
+            type: page
+        }
+        messages {
+            whenNoDataFound: No scheduled processes found
+        }
+        toolbar {
+            controls: [
+                searchCol
+                searchField
+                actionsMenu
+                resetButton
+            ]
+        }
+        download {
+            formats: [
+                csv
+                html
+                excel
+            ]
+        }
+        advanced {
+            savedReportMappingIdentifier: 8718114028501793
+        }
+
+        savedReport PRIMARY (
+            visibility: primary
+            view {
+                default: grid
+            }
+            singleRowView {
+                displayedColumns: true
+            }
+
+            displayColumn (
+                column: @JOB_NAME
+                layout {
+                    sequence: 1
+                }
+            )
+
+            displayColumn (
+                column: @OWNER
+                layout {
+                    sequence: 2
+                }
+            )
+
+            displayColumn (
+                column: @FULL_JOB_NAME
+                layout {
+                    sequence: 3
+                }
+            )
+
+            displayColumn (
+                column: @ENABLED
+                layout {
+                    sequence: 4
+                }
+            )
+
+            displayColumn (
+                column: @STATE
+                layout {
+                    sequence: 5
+                }
+            )
+
+            displayColumn (
+                column: @LAST_START_DATE
+                layout {
+                    sequence: 6
+                }
+            )
+
+            displayColumn (
+                column: @NEXT_RUN_DATE
+                layout {
+                    sequence: 7
+                }
+            )
+
+            displayColumn (
+                column: @RUN_COUNT
+                layout {
+                    sequence: 8
+                }
+            )
+
+            displayColumn (
+                column: @FAILURE_COUNT
+                layout {
+                    sequence: 9
+                }
+            )
+
+        )
+
+        column APEX$ROW_SELECTOR (
+            type: rowSelector
+            settings {
+                enableMultiSelect: false
+            }
+            layout {
+                sequence: 10
+            }
+        )
+
+        column ENABLED (
+            type: textField
+            heading {
+                heading: Enabled
+            }
+            layout {
+                sequence: 60
+            }
+            source {
+                databaseColumn: ENABLED
+                dataType: varchar2
+            }
+        )
+
+        column FAILURE_COUNT (
+            type: numberField
+            heading {
+                heading: Failure Count
+                alignment: end
+            }
+            layout {
+                sequence: 110
+                columnAlignment: end
+            }
+            source {
+                databaseColumn: FAILURE_COUNT
+                dataType: number
+            }
+            columnFilter {
+                lovType: none
+            }
+        )
+
+        column FULL_JOB_NAME (
+            type: textField
+            heading {
+                heading: Full Job Name
+            }
+            layout {
+                sequence: 50
+            }
+            source {
+                databaseColumn: FULL_JOB_NAME
+                dataType: varchar2
+            }
+        )
+
+        column JOB_NAME (
+            type: textField
+            heading {
+                heading: Job Name
+            }
+            layout {
+                sequence: 30
+            }
+            source {
+                databaseColumn: JOB_NAME
+                dataType: varchar2
+                primaryKey: true
+            }
+        )
+
+        column LAST_START_DATE (
+            type: datePicker
+            heading {
+                heading: Last Start
+            }
+            layout {
+                sequence: 80
+            }
+            appearance {
+                formatMask: DD-MON-YYYY HH24:MI:SS
+            }
+            source {
+                databaseColumn: LAST_START_DATE
+                dataType: timestamp
+            }
+        )
+
+        column NEXT_RUN_DATE (
+            type: datePicker
+            heading {
+                heading: Next Run
+            }
+            layout {
+                sequence: 90
+            }
+            appearance {
+                formatMask: DD-MON-YYYY HH24:MI:SS
+            }
+            source {
+                databaseColumn: NEXT_RUN_DATE
+                dataType: timestamp
+            }
+        )
+
+        column OWNER (
+            type: textField
+            heading {
+                heading: Owner
+            }
+            layout {
+                sequence: 40
+            }
+            source {
+                databaseColumn: OWNER
+                dataType: varchar2
+            }
+        )
+
+        column RUN_COUNT (
+            type: numberField
+            heading {
+                heading: Run Count
+                alignment: end
+            }
+            layout {
+                sequence: 100
+                columnAlignment: end
+            }
+            source {
+                databaseColumn: RUN_COUNT
+                dataType: number
+            }
+            columnFilter {
+                lovType: none
+            }
+        )
+
+        column STATE (
+            type: textField
+            heading {
+                heading: State
+            }
+            layout {
+                sequence: 70
+            }
+            source {
+                databaseColumn: STATE
+                dataType: varchar2
+            }
+        )
+
+        page {
+            borderWidth: 0.5
+            borderColor: #666666
+        }
+    )
+
+    button run-process (
+        buttonName: RUN_PROCESS
+        label: Run
+        layout {
+            sequence: 10
+            region: @process-controller-buttons
+            slot: next
+        }
+        appearance {
+            buttonTemplate: @/text
+            hot: true
+            templateOptions: #DEFAULT#
+        }
+        behavior {
+            action: definedByDynamicAction
+        }
+    )
+
+    button stop-process (
+        buttonName: STOP_PROCESS
+        label: Stop
+        layout {
+            sequence: 20
+            region: @process-controller-buttons
+            slot: next
+        }
+        appearance {
+            buttonTemplate: @/text
+            templateOptions: #DEFAULT#
+        }
+        behavior {
+            action: definedByDynamicAction
+        }
+    )
+
+    dynamicAction run-process-da (
+        name: "[Click] Run Process"
+        execution {
+            sequence: 10
+        }
+        when {
+            event: click
+            selectionType: button
+            button: @run-process
+        }
+
+        action run-process-js (
+            action: executeJsCode
+            settings {
+                jsCode: ProcessController.run();
+            }
+            execution {
+                sequence: 10
+                fireOnInit: false
+            }
+        )
+
+    )
+
+    dynamicAction stop-process-da (
+        name: "[Click] Stop Process"
+        execution {
+            sequence: 20
+        }
+        when {
+            event: click
+            selectionType: button
+            button: @stop-process
+        }
+
+        action stop-process-js (
+            action: executeJsCode
+            settings {
+                jsCode: ProcessController.stop();
+            }
+            execution {
+                sequence: 10
+                fireOnInit: false
+            }
+        )
+
+    )
+
+    process process-controller-save-interactive-grid-data (
+        name: Process Controller - Save Interactive Grid Data
+        type: interactiveGridAutoRowProcessing
+        editableRegion: @process-controller-ig
+        execution {
+            sequence: 10
+        }
+        advanced {
+            executionMappingIdentifier: 8638274572010504
+        }
+    )
+
+)
+

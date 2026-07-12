@@ -1,3 +1,7 @@
+-- liquibase formatted sql
+-- changeset WMS_LOG_PROC:1783879727569 stripComments:false  logicalFilePath:process_manager\wms_log_proc\package_specs\constants.sql
+-- sqlcl_snapshot src/database/wms_log_proc/package_specs/constants.sql:8614a545cf98ce4227234af5e5214a8b944861a9:8529e1b08cfd7853a9ee81fa922f65d1bf9b947c:alter
+
 create or replace package wms_log_proc.constants as
 
     -- LOG_MESSAGE_T.command values
@@ -12,5 +16,3 @@ create or replace package wms_log_proc.constants as
 end constants;
 /
 
-
--- sqlcl_snapshot {"hash":"8529e1b08cfd7853a9ee81fa922f65d1bf9b947c","type":"PACKAGE_SPEC","name":"CONSTANTS","schemaName":"WMS_LOG_PROC","sxml":""}

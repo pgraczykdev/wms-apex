@@ -33,3 +33,8 @@ file "js/log-settings.min.js" (
     charSet: utf-8
 )
 
+file "js/process-controller.js" (
+    mimeType: text/javascript
+    charSet: utf-8
+)
+
